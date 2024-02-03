@@ -1,26 +1,18 @@
 
 import './App.css';
-import {Button, Badge, ProgressBar, Form, InputGroup} from 'react-bootstrap';
+import {Button, Form, InputGroup} from 'react-bootstrap';
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Listing from './components/Listing';
 import axios from 'axios'
 
-
-
 function App() {
 
   const [show, setShow] = useState(false);
-
-
   const [contents, setContents] = useState([])
   const [searchTerms, setSearchTerms] = useState([]);
 
-  function onShow(e)  {
-    // Update searchTerm only when the button is clicked
-    setSearchTerms();
-  
-  };
+
   const handleClick = async () => {
     setShow(true);
     
@@ -28,28 +20,36 @@ function App() {
    
   }
   const doSearch = async (search) => {
-      try{
-        const response = await axios.get(`http://127.0.0.1:5000/search/${search}`)
-        setContents(response.data)
-      }
-      catch(error){
-        console.log('Error fetching data: ', error)
-      };
+
+    console.log(search)
+    try {
+      const url = `http://127.0.0.1:5000/search/${search}`;
+   
+      const response = await axios.get(url);
+      setContents(response.data);
+    } catch (error) {
+      console.log('Error fetching data: ', error);
+    }
   }
+  
+
+  
+  const keyDownHandler = (event) => {
+   
+    if (event.key === 'Enter') {
+     
+      event.preventDefault(); // Prevent the default behavior of the Enter key
+      handleClick();
+    }
+  };
 
   useEffect(() => {
-    const keyDownHandler = event => {
-      if(event.key === 'Enter'){
-        handleClick()
-      }
-      document.addEventListener('keydown', keyDownHandler)
-      return () => {
-        document.removeEventListener('keydown', keyDownHandler);
-      };
+    document.addEventListener('keydown', keyDownHandler);
+    return () => {
+      document.removeEventListener('keydown', keyDownHandler);
+    };
+  }, []); // Empty dependency array to run the effect only once on mount
 
-    }
-
-  }, []);
   
   return (
     <div className="App">
@@ -58,21 +58,20 @@ function App() {
      </h1>
 
      <h3>
-      An easier way to find prices on sports cards.
+      An easier way to find prices on sports cards (And other items!)
      </h3>
     <br />
-    <InputGroup className="mb-3">
+    <InputGroup className="mb-3"  style={{paddingRight: "100px",
+                                          paddingLeft: "100px"}}>
         <Form.Control
           placeholder="Search for a card here"
           aria-label="CardName"
           aria-describedby="basic-addon2"
+          size="lg"
          
           onChange={e => {
-            setSearchTerms(e.currentTarget.value)
+            setSearchTerms(e.target.value)
           }}
-          
-          
-
           />
         <Button variant="outline-secondary" id="button-addon1" onClick={handleClick}>  
           Search
@@ -82,10 +81,11 @@ function App() {
  
       {show && contents.data && contents.data.length > 0 && (
         contents.data.map((item) => 
-        <>
-          <Listing props={item}/>
-        </>
+        <div style={{justifyContent: "center", display: "flex"}}>
+          <Listing props={item} />
+        </div>
         )
+        
       )}
 
     </div>
