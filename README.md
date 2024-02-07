@@ -1,70 +1,25 @@
-# Getting Started with Create React App
+# Ebay Search Comps Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a simple application I built in React that simply searches for an item on ebay and gets the most recently sold prices for it. It is much easier than having to navigate Ebay's filtering UI every time someone wants to search for a particular item. 
 
-## Available Scripts
+![image](https://github.com/jgalang21/ebay_comps/assets/22481757/89df5157-27be-43ff-8f52-c810b32dd749)
 
-In the project directory, you can run:
+It shows each recently sold listing with the sold price, date, picture and a link to the actual listing. 
 
-### `npm start`
+## Core Technologies Used:
+* React
+* React Boostrap
+  * General styling
+* Python / Flask
+  * Building endpoints and Web APIs 
+* BeautifulSoup (Python Library)
+  * For parsing Ebay's HTML
+  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# HOW TO RUN
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Go to [this repository](https://github.com/jgalang21/ebayWebAPI), clone the repo and run the python file. You can simply open the python file in VS Code and just run it. This will launch an instance of the Web API. Make note of the URL it's running on.
+2. Clone **this** repository, run an *npm i* command. In the App.js, make sure the url matches the one the Python file is running. Start the application with *npm start*
+3. An instance of the app should open. Type in any item you wish to search for, then click search. Listings should appear as a result!
+   ![image](https://github.com/jgalang21/ebay_comps/assets/22481757/347e39d5-499f-4aff-a779-f621fbf90c31)
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
